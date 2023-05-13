@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>Nazar Propiedades</title>
+</head>
+
+<body>
+    <section id="water__mark">
+        <div class="container__lg">
+            <div class="container__main">
+                <form>
+                    <div>
+                        <p>Condicion</p>
+                        <input type="text" placeholder="Ej. ALQUILER" id="condition" required>
+                    </div>
+                    <div>
+                        <p>Ubicacion</p>
+                        <input type="text" placeholder="Ej. VILLA PALMARES" id="location" required>
+                    </div>
+                    <div>
+                        <p>Departamento</p>
+                        <input type="text" placeholder="Ej. Godoy Cruz - Mendoza" id="zone" required>
+                    </div>
+                    <div class="datos">
+                        <div>
+                            <p>Superficie</p>
+                            <input type="number" placeholder="Ej. 150" id="surface" required>
+                        </div>
+                        <div>
+                            <p>Cochera</p>
+                            <input type="text" placeholder="Ej. Cochera Doble" id="garage" required>
+                        </div>
+                    </div>
+                    <div class="datos">
+                        <div>
+                            <p>Habitaciones</p>
+                            <input type="number" placeholder="Ej. 2" id="bed" required>
+                        </div>
+                        <div>
+                            <p>Baños</p>
+                            <input type="number" placeholder="Ej. 2" id="bath" required>
+                        </div>
+                    </div>
+                </form>
+                <div class="img__container">
+                    <p class="img__text">Seleecionar Imagen</p>
+                    <img id="originalImage" alt="">
+                    <img src="./src/img/plantilla.png" alt="">
+                    <div id="values">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <input id="upload" type="file">
+                </div>
+                <button id="download">Descargar</button>
+                <a id="actionDowload" download></a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="./src/js/script.js"></script>
+</body>
+
+</html>
