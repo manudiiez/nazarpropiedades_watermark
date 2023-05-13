@@ -1,5 +1,5 @@
 const fileInput = document.querySelector("#upload");
-const values = document.querySelectorAll("#values p");
+// const values = document.querySelectorAll("#values p");
 const conditionInput = document.querySelector("#condition");
 const locationInput = document.querySelector("#location");
 const zoneInput = document.querySelector("#zone");
@@ -19,27 +19,27 @@ fileInput.addEventListener("change", async (e) => {
 
     return false;
 });
-conditionInput.addEventListener('keyup', () => {
-    values[0].textContent = conditionInput.value.toUpperCase()
-})
-locationInput.addEventListener('keyup', () => {
-    values[1].textContent = locationInput.value.toUpperCase()
-})
-zoneInput.addEventListener('keyup', () => {
-    values[2].textContent = zoneInput.value
-})
-surfaceInput.addEventListener('keyup', () => {
-    values[3].textContent = surfaceInput.value + 'm2'
-})
-garageInput.addEventListener('keyup', () => {
-    values[4].textContent = garageInput.value
-})
-bedInput.addEventListener('keyup', () => {
-    values[5].textContent = bedInput.value
-})
-bathInput.addEventListener('keyup', () => {
-    values[6].textContent = bathInput.value
-})
+// conditionInput.addEventListener('keyup', () => {
+//     values[0].textContent = conditionInput.value.toUpperCase()
+// })
+// locationInput.addEventListener('keyup', () => {
+//     values[1].textContent = locationInput.value.toUpperCase()
+// })
+// zoneInput.addEventListener('keyup', () => {
+//     values[2].textContent = zoneInput.value
+// })
+// surfaceInput.addEventListener('keyup', () => {
+//     values[3].textContent = surfaceInput.value + 'm2'
+// })
+// garageInput.addEventListener('keyup', () => {
+//     values[4].textContent = garageInput.value
+// })
+// bedInput.addEventListener('keyup', () => {
+//     values[5].textContent = bedInput.value
+// })
+// bathInput.addEventListener('keyup', () => {
+//     values[6].textContent = bathInput.value
+// })
 
 downloadButton.addEventListener('click', async () => {
     // const watermarkedImage = document.querySelector("#watermarkedImage");
