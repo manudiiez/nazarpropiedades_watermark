@@ -8,13 +8,20 @@ const garageInput = document.querySelector("#garage");
 const bedInput = document.querySelector("#bed");
 const bathInput = document.querySelector("#bath");
 const downloadButton = document.querySelector("#download");
+const originalImage = document.querySelector("#originalImage");
+const mobile__image__container = document.querySelector("#mobile__image__container");
+const mobile__image = document.querySelector("#mobile__image");
 
 
+// let navegador = navigator.userAgent;
+// if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) || window.innerWidth <= 550) {
+//     alert("Toma Pop-Up, por entrar con un dispositivo móvil");
+// } else {
+//     console.log("No estás usando un móvil");
+// }
 
 fileInput.addEventListener("change", async (e) => {
     const [file] = fileInput.files;
-
-    const originalImage = document.querySelector("#originalImage");
     originalImage.src = await fileToDataUri(file);
 
     return false;
@@ -48,6 +55,11 @@ downloadButton.addEventListener('click', async () => {
     //     "./src/plantilla.png"
     // );
     download_image()
+    mobile__image.src = await watermarkImage(
+        originalImage,
+        "./src/img/plantilla.png");
+    mobile__image__container.style.visibility = "visible";
+
 })
 
 
@@ -65,7 +77,6 @@ function fileToDataUri(field) {
 
 async function download_image() {
     // const canvas = document.getElementById("watermarkedImage");
-    const originalImage = document.querySelector("#originalImage");
 
     console.log('dowload');
     const link = document.getElementById("actionDowload");

@@ -183,5 +183,16 @@
   color: #be4436;
   border: solid 2px #be4436;
 }
+#water__mark #mobile__image__container {
+  width: 100%;
+  grid-column: 1/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#water__mark #mobile__image__container img {
+  width: 100%;
+  max-width: 400px;
+}
 
 /*# sourceMappingURL=style.css.map */
