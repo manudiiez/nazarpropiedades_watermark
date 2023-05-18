@@ -44,20 +44,17 @@ fileInput.addEventListener("change", async (e) => {
 // })
 
 downloadButton.addEventListener('click', async () => {
-    console.log('click');
-    
     if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) || window.innerWidth <= 550) {
         mobile__image.src = await watermarkImage(
             originalImage,
             "./src/img/plantilla.png");
             mobile__image__container.style.visibility = "visible";
-            downloadButton.textContent = 'clickeado cel'
-        } else {
-            downloadButton.textContent = 'clickeado pc'
-            download_image()
-        }
-        mobile__p.textContent = await watermarkImage(originalImage,
-        "./src/img/plantilla.png")
+            console.log('click desde el cel');
+    } else {
+        download_image()
+        console.log('click desde la pc');
+    }
+    console.log('click');
 })
 
 
@@ -184,8 +181,8 @@ async function watermarkImage(originalImage, watermarkImagePath) {
     context.font = "bold 22px Arial";
     context.fillText(bathInput.value, canvasWidth - 159, canvasHeight - 40);
 
-    // return canvas.toDataURL();
-    return 'nashe'
+    return canvas.toDataURL();
+    // return 'nashe'
 }
 
 
