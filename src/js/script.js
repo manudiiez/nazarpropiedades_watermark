@@ -44,19 +44,19 @@ fileInput.addEventListener("change", async (e) => {
 // })
 
 downloadButton.addEventListener('click', async () => {
-    if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) || window.innerWidth <= 550) {
-        mobile__image.src = await watermarkImage(
-            originalImage,
-            "./src/img/plantilla.png");
-            mobile__image__container.style.visibility = "visible";
-            console.log('click desde el cel');
-            mobile__p.textContent = 'cel'
-        } else {
-            download_image()
-            console.log('click desde la pc');
-            mobile__p.textContent = 'desk'
+    downloadButton.textContent = 'clickeado'
+    if (window.innerWidth <= 550) {
+        mobile__p.textContent = 'cel uno'
+        mobile__image.src = await watermarkImage(originalImage, "./src/img/plantilla.png");
+        mobile__image__container.style.visibility = "visible";
+        console.log('click desde el cel');
+        mobile__p.textContent = 'cel dos'
+    } else {
+        mobile__p.textContent = 'desk uno'
+        download_image()
+        console.log('click desde la pc');
+        mobile__p.textContent = 'desk dos'
     }
-    console.log('click');
 })
 
 
