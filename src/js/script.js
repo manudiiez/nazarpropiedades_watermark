@@ -50,9 +50,11 @@ downloadButton.addEventListener('click', async () => {
             "./src/img/plantilla.png");
             mobile__image__container.style.visibility = "visible";
             console.log('click desde el cel');
-    } else {
-        download_image()
-        console.log('click desde la pc');
+            mobile__p.textContent = 'cel'
+        } else {
+            download_image()
+            console.log('click desde la pc');
+            mobile__p.textContent = 'desk'
     }
     console.log('click');
 })
