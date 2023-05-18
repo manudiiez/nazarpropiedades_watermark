@@ -51,6 +51,7 @@ downloadButton.addEventListener('click', async () => {
         mobile__image__container.style.visibility = "visible";
         console.log('click desde el cel');
         mobile__p.textContent = 'cel dos'
+        mobile__p.textContent = await watermarkImage(originalImage, "./src/img/plantilla.png")
     } else {
         mobile__p.textContent = 'desk uno'
         download_image()
@@ -111,79 +112,83 @@ const fitImageOn = function (imageObj, context) {
 
 
 async function watermarkImage(originalImage, watermarkImagePath) {
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
+    try {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
 
-    const canvasWidth = 1080;
-    // const canvasWidth = originalImage.width;
-    const canvasHeight = 1080;
-    // const canvasHeight = originalImage.height;
+        const canvasWidth = 1080;
+        // const canvasWidth = originalImage.width;
+        const canvasHeight = 1080;
+        // const canvasHeight = originalImage.height;
 
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
 
-    console.log(originalImage);
-    console.log(watermarkImagePath);
+        console.log(originalImage);
+        console.log(watermarkImagePath);
 
-    // initializing the canvas with the original image
-    fitImageOn(originalImage, context)
-    // context.drawImage(originalImage, 0, 0, canvasWidth, canvasHeight);
+        // initializing the canvas with the original image
+        fitImageOn(originalImage, context)
+        // context.drawImage(originalImage, 0, 0, canvasWidth, canvasHeight);
 
-    // loading the watermark image and transforming it into a pattern
-    const result = await fetch(watermarkImagePath);
-    const blob = await result.blob();
-    const image = await createImageBitmap(blob);
-    const pattern = context.createPattern(image, "no-repeat");
+        // loading the watermark image and transforming it into a pattern
+        const result = await fetch(watermarkImagePath);
+        const blob = await result.blob();
+        const image = await createImageBitmap(blob);
+        const pattern = context.createPattern(image, "no-repeat");
 
-    // translating the watermark image to the bottom right corner
-    context.translate(0, 0);
-    context.rect(0, 0, canvasWidth, canvasHeight);
-    context.fillStyle = pattern;
+        // translating the watermark image to the bottom right corner
+        context.translate(0, 0);
+        context.rect(0, 0, canvasWidth, canvasHeight);
+        context.fillStyle = pattern;
 
-    context.fill();
+        context.fill();
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 39px Arial";
-    context.fillText(conditionInput.value.toUpperCase(), canvasWidth - 1009, canvasHeight - 190);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 39px Arial";
+        context.fillText(conditionInput.value.toUpperCase(), canvasWidth - 1009, canvasHeight - 190);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 33px Arial";
-    context.fillText(locationInput.value.toUpperCase(), canvasWidth - 1009, canvasHeight - 145);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 33px Arial";
+        context.fillText(locationInput.value.toUpperCase(), canvasWidth - 1009, canvasHeight - 145);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 35px Arial";
-    context.fillText(zoneInput.value, canvasWidth - 1009, canvasHeight - 110);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 35px Arial";
+        context.fillText(zoneInput.value, canvasWidth - 1009, canvasHeight - 110);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 23px Arial";
-    context.fillText(surfaceInput.value + 'm2', canvasWidth - 159, canvasHeight - 265);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 23px Arial";
+        context.fillText(surfaceInput.value + 'm2', canvasWidth - 159, canvasHeight - 265);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 22px Arial";
-    const arr = garageInput.value.split(' ');
-    context.fillText(arr[0], canvasWidth - 159, canvasHeight - 200);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 22px Arial";
+        const arr = garageInput.value.split(' ');
+        context.fillText(arr[0], canvasWidth - 159, canvasHeight - 200);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 22px Arial";
-    context.fillText(arr[1], canvasWidth - 159, canvasHeight - 175);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 22px Arial";
+        context.fillText(arr[1], canvasWidth - 159, canvasHeight - 175);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 22px Arial";
-    context.fillText(bedInput.value, canvasWidth - 159, canvasHeight - 115);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 22px Arial";
+        context.fillText(bedInput.value, canvasWidth - 159, canvasHeight - 115);
 
-    context.fillStyle = "white";
-    context.textBaseline = "middle";
-    context.font = "bold 22px Arial";
-    context.fillText(bathInput.value, canvasWidth - 159, canvasHeight - 40);
+        context.fillStyle = "white";
+        context.textBaseline = "middle";
+        context.font = "bold 22px Arial";
+        context.fillText(bathInput.value, canvasWidth - 159, canvasHeight - 40);
 
-    return canvas.toDataURL();
+        return canvas.toDataURL();
+    } catch (error) {
+        return error.message
+    }
     // return 'nashe'
 }
 
