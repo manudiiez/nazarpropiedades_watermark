@@ -51,8 +51,9 @@ downloadButton.addEventListener('click', async () => {
             originalImage,
             "./src/img/plantilla.png");
             mobile__image__container.style.visibility = "visible";
-            downloadButton.textContent = 'clickeado'
+            downloadButton.textContent = 'clickeado cel'
         } else {
+            downloadButton.textContent = 'clickeado pc'
             download_image()
         }
         mobile__p.textContent = await watermarkImage(originalImage,
