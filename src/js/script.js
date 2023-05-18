@@ -11,6 +11,7 @@ const downloadButton = document.querySelector("#download");
 const originalImage = document.querySelector("#originalImage");
 const mobile__image__container = document.querySelector("#mobile__image__container");
 const mobile__image = document.querySelector("#mobile__image");
+const mobile__p = document.querySelector("#mobile__p");
 
 
 
@@ -44,17 +45,18 @@ fileInput.addEventListener("change", async (e) => {
 
 downloadButton.addEventListener('click', async () => {
     console.log('click');
-    downloadButton.textContent = 'clickeado'
-
+    
     if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) || window.innerWidth <= 550) {
         mobile__image.src = await watermarkImage(
             originalImage,
             "./src/img/plantilla.png");
             mobile__image__container.style.visibility = "visible";
+            downloadButton.textContent = 'clickeado'
         } else {
-        download_image()
-    }
-
+            download_image()
+        }
+        mobile__p.textContent = await watermarkImage(originalImage,
+        "./src/img/plantilla.png")
 })
 
 
@@ -181,7 +183,8 @@ async function watermarkImage(originalImage, watermarkImagePath) {
     context.font = "bold 22px Arial";
     context.fillText(bathInput.value, canvasWidth - 159, canvasHeight - 40);
 
-    return canvas.toDataURL();
+    // return canvas.toDataURL();
+    return 'nashe'
 }
 
 
