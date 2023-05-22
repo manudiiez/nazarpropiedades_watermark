@@ -109,7 +109,22 @@ const fitImageOn = function (imageObj, context) {
 
 }
 
+async function watermarkImage(originalImage, watermarkImagePath){
+    try {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        context.drawImage(watermarkImagePath, 0, 0, 1080, 1080);
 
+        context.fill();
+
+
+        return canvas.toDataURL();
+
+        
+    } catch (error) {
+        return error.message
+    }
+}
 
 async function watermarkImage(originalImage, watermarkImagePath) {
     try {
@@ -123,9 +138,6 @@ async function watermarkImage(originalImage, watermarkImagePath) {
 
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
-
-        console.log(originalImage);
-        console.log(watermarkImagePath);
 
         // initializing the canvas with the original image
         fitImageOn(originalImage, context)
@@ -189,7 +201,6 @@ async function watermarkImage(originalImage, watermarkImagePath) {
     } catch (error) {
         return error.message
     }
-    // return 'nashe'
 }
 
 
