@@ -47,11 +47,11 @@ downloadButton.addEventListener('click', async () => {
     downloadButton.textContent = 'clickeado'
     if (window.innerWidth <= 550) {
         mobile__p.textContent = 'cel uno'
-        mobile__image.src = await watermarkImage(originalImage, "./src/img/plantilla.png");
+        mobile__image.src = await watermarkImage("./src/img/plantilla.png", "./src/img/plantilla.png");
         mobile__image__container.style.visibility = "visible";
         console.log('click desde el cel');
         mobile__p.textContent = 'cel dos'
-        mobile__p.textContent = await watermarkImage(originalImage, "./src/img/plantilla.png")
+        mobile__p.textContent = await watermarkImage("./src/img/plantilla.png", "./src/img/plantilla.png")
     } else {
         mobile__p.textContent = 'desk uno'
         download_image()
@@ -77,7 +77,7 @@ async function download_image() {
     const link = document.getElementById("actionDowload");
     link.download = `nazarpropiedades-${Date.now()}.png`;
     link.href = await watermarkImage(
-        originalImage,
+        "./src/img/plantilla.png",
         "./src/img/plantilla.png");
     link.click();
 }
@@ -109,22 +109,7 @@ const fitImageOn = function (imageObj, context) {
 
 }
 
-async function watermarkImage(originalImage, watermarkImagePath){
-    try {
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
-        context.drawImage(watermarkImagePath, 0, 0, 1080, 1080);
 
-        context.fill();
-
-
-        return canvas.toDataURL();
-
-        
-    } catch (error) {
-        return error.message
-    }
-}
 
 async function watermarkImage(originalImage, watermarkImagePath) {
     try {
@@ -138,6 +123,9 @@ async function watermarkImage(originalImage, watermarkImagePath) {
 
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
+
+        console.log(originalImage);
+        console.log(watermarkImagePath);
 
         // initializing the canvas with the original image
         fitImageOn(originalImage, context)
@@ -201,6 +189,7 @@ async function watermarkImage(originalImage, watermarkImagePath) {
     } catch (error) {
         return error.message
     }
+    // return 'nashe'
 }
 
 
