@@ -43,8 +43,8 @@ fileInput.addEventListener("change", async (e) => {
 // })
 
 downloadButton.addEventListener('click', async () => {
-    console.log('click');
-    downloadButton.textContent = 'clickeado'
+    // console.log('click');
+    // downloadButton.textContent = 'clickeado'
 
     if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) || window.innerWidth <= 550) {
         mobile__image.src = await watermarkImage(
@@ -72,7 +72,7 @@ function fileToDataUri(field) {
 
 async function download_image() {
     const link = document.getElementById("actionDowload");
-    link.download = `nazarpropiedades-${Date.now()}.png`;
+    link.download = `nazarpropiedades-${Date.now()}.jpeg`;
     link.href = await watermarkImage(
         originalImage,
         "./src/img/plantilla.png");
