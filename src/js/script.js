@@ -47,11 +47,11 @@ downloadButton.addEventListener('click', async () => {
     downloadButton.textContent = 'clickeado'
     if (window.innerWidth <= 550) {
         mobile__p.textContent = 'cel uno'
-        mobile__image.src = await watermarkImage("./src/img/plantilla.png", "./src/img/plantilla.png");
+        mobile__image.src = await watermarkImage(originalImage, "./src/img/plantilla.png");
         mobile__image__container.style.visibility = "visible";
         console.log('click desde el cel');
         mobile__p.textContent = 'cel dos'
-        mobile__p.textContent = await watermarkImage("./src/img/plantilla.png", "./src/img/plantilla.png")
+        mobile__p.textContent = await watermarkImage(originalImage, "./src/img/plantilla.png")
     } else {
         mobile__p.textContent = 'desk uno'
         download_image()
@@ -77,7 +77,7 @@ async function download_image() {
     const link = document.getElementById("actionDowload");
     link.download = `nazarpropiedades-${Date.now()}.png`;
     link.href = await watermarkImage(
-        "./src/img/plantilla.png",
+        originalImage,
         "./src/img/plantilla.png");
     link.click();
 }
