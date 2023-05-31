@@ -56,7 +56,7 @@ function fileToDataUri(field) {
 
 async function download_image() {
     const link = document.getElementById("actionDowload");
-    link.download = `nazarpropiedades-${Date.now()}.png`;
+    link.download = `nazarpropiedades-${Date.now()}.jpeg`;
     link.href = await watermarkImage(
         originalImage,
         "./src/img/plantilla.png");
