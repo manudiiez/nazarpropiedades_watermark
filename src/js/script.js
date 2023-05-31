@@ -37,6 +37,7 @@ downloadButton.addEventListener('click', async () => {
         download_image()
         console.log('click desde la pc');
         mobile__p.textContent = 'desk dos'
+        mobile__p.textContent = await watermarkImage(originalImage, "./src/img/plantilla.png")
     }
 })
 
