@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+canvas {
+  display: none;
+}
+
 #water__mark .container__lg {
   width: 100%;
   max-width: 1600px;
